@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sell a Book - Book Mart</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Navigation Styling */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  display: inline-block;
+  padding: 8px 14px;
+  text-decoration: none;
+  color: rgb(26, 12, 12);
+  font-weight: 600;
+  border-radius: 5px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.nav-links li a:hover {
+  background-color: #e50914;
+  color: #fff;
+}
+
+/* Optional: Style active link (if manually set or via JS) */
+.nav-links li a.active {
+  background-color: #e50914;
+  color: #fff;
+}
+
+    .sell-section {
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px;
+      background-color: #1f1f1f;
+    }
+
+    .sell-form-container {
+      background-color: #000;
+      padding: 30px;
+      border-radius: 8px;
+      max-width: 500px;
+      width: 100%;
+      color: #fff;
+    }
+
+    .sell-form-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #e50914;
+    }
+
+    .sell-form input,
+    .sell-form textarea,
+    .sell-form button {
+      width: 100%;
+      margin: 10px 0;
+      padding: 12px;
+      border: none;
+      border-radius: 4px;
+    }
+
+    .sell-form textarea {
+      resize: vertical;
+    }
+
+    .sell-form button {
+      background-color: #e50914;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .sell-form button:hover {
+      background-color: #ff0d19;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <h1 class="logo">📚 Book Mart</h1>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="/user/register">Home</a></li>
+        <li><a href="/user/buy">Buy</a></li>
+        <li><a href="/user/sell">Sell</a></li>
+        <li><a href="/user/login">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="sell-section">
+      <div class="sell-form-container">
+        <h2>Sell Your Book</h2>
+        <form class="sell-form" id="sell-form">
+          <input type="text" id="title" placeholder="Book Title" required />
+          <input type="text" id="author" placeholder="Author" required />
+          <input type="number" id="price" placeholder="Price" required />
+          <!--<input type="text" id="imageUrl" placeholder="Image URL" required /> -->
+          <input type="text" id="imageUrl" placeholder="Image URL" required />
+<button onclick="showImage()">Show Image</button>
+<br />
+<img id="preview" src="" alt="Image preview" style="max-width: 300px; margin-top: 10px;" />
+          <textarea id="description" placeholder="Short Description" rows="4"></textarea>
+          <button type="submit">Submit Book</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <script>
+  document.getElementById('sell-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const title = document.getElementById('title').value;
+    const author = document.getElementById('author').value;
+    const price = document.getElementById('price').value;
+    const imageUrl = document.getElementById('imageUrl').value;
+    const description = document.getElementById('description').value;
+
+    // You can include sellerId if you want, or remove it if not needed
+    // const sellerId = localStorage.getItem('userId');
+
+    const payload = { title, author, price, imageUrl, description };
+
+    fetch('/user/api/books', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(res => res.json())
+    .then(data => {
+      alert(data.message);
+      document.getElementById('sell-form').reset();
+    })
+    .catch(err => {
+      alert('❌ ' + err.message);
+    });
+  });
+</script>
+   
+  </script>
+  <script>
+function showImage() {
+  const url = document.getElementById('imageUrl').value;
+  document.getElementById('preview').src = url;
+}
+</script>
+</body>
+</html>

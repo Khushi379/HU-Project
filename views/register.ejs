@@ -1,0 +1,296 @@
+<!----
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+  </head>
+  
+  <body
+    class="bg-gray-50 dark:bg-gray-800 h-screen w-screen display flex items-center justify-center">
+    
+<form 
+    class=" w-96"
+    action="/user/register"
+    method="POST"
+>
+
+        <div>
+            <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">User name</label>
+            <input type="text" id="username" name = " username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="John" required />
+        </div>
+        
+       
+        
+    </div>
+    <div class="mb-6">
+        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email address</label>
+        <input type="email" id="email" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="john.doe@company.com" required />
+    </div> 
+    <div class="mb-6">
+        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+        <input type="password" id="password" name ="Password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="•••••••••" required />
+    </div> 
+   
+    
+    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+</form>
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+  </body>
+</html>
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Book Mart</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #141414;
+  color: #fff;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background: #000;
+}
+
+.logo {
+  font-size: 1.8rem;
+  color: #e50914;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+  color: #e50914;
+}
+
+
+.hero {
+  padding: 50px 20px;
+  text-align: center;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.8), #141414);
+}
+
+.carousel-section {
+  padding: 20px;
+}
+
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  padding: 10px 0;
+}
+
+.book {
+  min-width: 200px;
+  transition: transform 0.3s ease;
+}
+
+.book img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.book:hover {
+  transform: scale(1.05);
+}
+
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #000;
+  color: #888;
+}
+.auth-section {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+  background-color: #1f1f1f;
+}
+
+.auth-container {
+  background-color: #000;
+  padding: 30px;
+  border-radius: 8px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.auth-container h3 {
+  margin-bottom: 20px;
+  color: #e50914;
+}
+
+.auth-container input {
+  width: 100%;
+  margin: 10px 0;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+}
+
+.auth-container button {
+  width: 100%;
+  padding: 12px;
+  background-color: #e50914;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.auth-container button:hover {
+  background-color: #ff0d19;
+}
+
+#toggle-form {
+  margin-top: 15px;
+  color: #888;
+  cursor: pointer;
+}
+
+#toggle-form span {
+  color: #e50914;
+  text-decoration: underline;
+}
+
+
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <h1 class="logo"> Book Mart</h1>
+    <nav>
+      <ul class="nav-links">
+  <li><a href="/user/register">Home</a></li>
+  <li><a href="/user/buy">Buy</a></li>
+  <li><a href="/user/sell">Sell</a></li>
+  <li><a href="/user/login">Login</a></li>
+</ul>
+
+    </nav>
+  </header>
+
+  <main class="main">
+    <section class="hero">
+      <h2>Discover & Sell Books</h2>
+      <p>New arrivals, classics, best sellers & more</p>
+    </section>
+
+    <section class="carousel-section">
+      <h3>Trending Books</h3>
+      <div class="carousel">
+        <div class="book"><img src="https://www.google.com/imgres?q=dsa%20books&imgurl=https%3A%2F%2Fm.media-amazon.com%2Fimages%2FI%2F61CVP-MfUoL._AC_UF350%2C350_QL50_.jpg&imgrefurl=https%3A%2F%2Fwww.amazon.in%2FData-Structures-Algorithms-Made-Easy%2Fdp%2F819324527X&docid=y9nzDYKs0RtqYM&tbnid=YkMca-jpoJA3UM&vet=12ahUKEwiZr4vbt6qNAxXfwzgGHee1BD4QM3oECEkQAA..i&w=184&h=350&hcb=2&ved=2ahUKEwiZr4vbt6qNAxXfwzgGHee1BD4QM3oECEkQAA" alt="Book 1"></div>
+        <div class="book"><height>75%</height><img src="https://m.media-amazon.com/images/I/61CVP-MfUoL._AC_UF350,350_QL50_.jpg" alt="Book 2"></div>
+        <div class="book"><height></height><img src="https://miro.medium.com/v2/resize:fit:700/1*4rrupXV_drR9r8Wqi9YsNw.jpeg" alt="Book 3"></div>
+        <div class="book"><img src="https://www.interviewbit.com/blog/wp-content/uploads/2022/02/Introduction-to-Algorithms.jpg" alt="Book 4"></div>
+        <!-- Add more book divs -->
+      </div>
+    </section>
+    <section class="auth-section">
+  <div class="auth-container">
+    <h3 id="form-title">Login</h3>
+    <form action="/user/login" method="POST">
+  <input type="email" name="Email" required>
+  <input type="password" name="Password" required>
+  <button type="submit">Login</button>
+</form>
+  </div>
+</section>
+
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 Book Mart. All rights reserved.</p>
+  </footer>
+
+  <!--<script src="script.js">// For future JavaScript interactions (search, filters, animations, etc.)
+console.log('Book Mart loaded');
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('auth-form');
+  const toggle = document.getElementById('toggle-form');
+  const formTitle = document.getElementById('form-title');
+  const usernameField = document.getElementById('username');
+
+  let isLogin = true;
+
+  toggle.addEventListener('click', () => {
+    isLogin = !isLogin;
+    formTitle.textContent = isLogin ? 'Login' : 'Register';
+    toggle.innerHTML = isLogin
+      ? "Don't have an account? <span>Register</span>"
+      : "Already have an account? <span>Login</span>";
+    usernameField.style.display = isLogin ? 'none' : 'block';
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const username = document.getElementById('username').value;
+
+    const endpoint = isLogin ? '/api/users/login' : '/api/users/register';
+
+    const payload = isLogin
+      ? { email, password }
+      : { username, email, password };
+
+    try {
+      const res = await fetch(`http://localhost:5000${endpoint}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) throw new Error(data.error || 'Something went wrong');
+
+      alert(`${isLogin ? 'Login' : 'Registration'} successful!`);
+      console.log(data); // You can store token here if needed
+    } catch (err) {
+      alert(err.message);
+    }
+  });
+});
+
+
+
+
+
+</script> -->
+  
+
+
+</body>
+</html>

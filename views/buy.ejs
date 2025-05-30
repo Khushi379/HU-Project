@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Buy Books - Book Mart</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <style>
+    .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  display: inline-block;
+  padding: 8px 14px;
+  text-decoration: none;
+  color: rgb(26, 12, 12);
+  font-weight: 600;
+  border-radius: 5px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.nav-links li a:hover {
+  background-color: #e50914;
+  color: #fff;
+}
+  </style>
+  <header class="header">
+    <h1 class="logo">📚 Book Mart</h1>
+    <nav>
+     <ul style="max-width:600px; margin:30px auto; padding:0; list-style:none;">
+  <% books.forEach(book => { %>
+    <li id="book-<%= book._id %>" style="background:#f8f8f8; margin-bottom:20px; padding:18px 22px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.07); position:relative;">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <span style="color:#e50914; font-weight:bold; font-size:1.1em;">$<%= book.price %></span>
+        <button 
+          style="background:none; border:none; font-size:18px; color:#e50914; cursor:pointer;"
+          title="Delete"
+          onclick="deleteBook('<%= book._id %>')"
+        >&#10006;</button>
+      </div>
+      <!-- Dummy book image with book title as text and alt -->
+      <div style="display:flex; justify-content:center; align-items:center; margin:16px 0;">
+  <div style="
+    background: linear-gradient(135deg, #fff 60%, #ffe5e5 100%);
+    padding: 10px;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(229,9,20,0.13);
+    display: inline-block;
+    border: 2.5px solid #e50914;
+    position: relative;
+  ">
+    <img 
+  src="<%= book.imageUrl ? book.imageUrl : 'https://via.placeholder.com/120x160?text=' + encodeURIComponent(book.title) %>" 
+  alt="<%= book.title %>" 
+  style="display:block; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.13); width:120px; height:160px; object-fit:cover; background:#f23c3c;"
+>
+  </div>
+</div>
+      <strong style="font-size:1.2em; color:#222; display:block; text-align:center;"><%= book.title %></strong>
+      <span style="color:#555; display:block; text-align:center;">by <%= book.author %></span>
+      <div style="margin-top:10px; color:#444; text-align:center;"><%= book.description %></div>
+      <div style="display:block; text-align:center; margin-top:16px;">
+  <button style="background:#e50914; color:#fff; border:none; padding:8px 18px; border-radius:5px; font-weight:600; cursor:pointer;"
+    onclick="showThankYou()">
+    Buy Now
+  </button>
+</div>
+    </li>
+  <% }) %>
+</ul>
+
+  <!--<% books.forEach(book => { %>
+    <li style="background:#f8f8f8; margin-bottom:20px; padding:18px 22px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.07); position:relative;">
+      <!-- Cross button --
+      <button 
+        style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:18px; color:#e50914; cursor:pointer;"
+        title="Remove"
+        onclick="this.closest('li').style.display='none';"
+      >&#10006;</button>
+      <strong style="font-size:1.2em; color:#222;"><%= book.title %></strong>
+      <span style="color:#555;"> by <%= book.author %></span>
+      <span style="float:right; color:#e50914; font-weight:bold;">$<%= book.price %></span>
+      <div style="clear:both; height:12px;"></div>
+      <div style="margin-top:10px; color:#444;"><%= book.description %></div>
+      <button style="margin-top:16px; background:#e50914; color:#fff; border:none; padding:8px 18px; border-radius:5px; font-weight:600; cursor:pointer;">
+        Buy Now
+      </button>
+    </li>
+  <% }) %>
+</ul>
+-->
+
+
+
+<script>
+    function showThankYou() {
+      // Create overlay
+      const overlay = document.createElement('div');
+      overlay.style.position = 'fixed';
+      overlay.style.top = 0;
+      overlay.style.left = 0;
+      overlay.style.width = '100vw';
+      overlay.style.height = '100vh';
+      overlay.style.background = 'rgba(0,0,0,0.7)';
+      overlay.style.display = 'flex';
+      overlay.style.justifyContent = 'center';
+      overlay.style.alignItems = 'center';
+      overlay.style.zIndex = 9999;
+
+      // Create confirmation box
+      const box = document.createElement('div');
+      box.style.background = '#fff';
+      box.style.padding = '40px 50px';
+      box.style.borderRadius = '16px';
+      box.style.textAlign = 'center';
+      box.style.boxShadow = '0 2px 16px rgba(0,0,0,0.15)';
+      box.innerHTML = `
+        <div style="font-size:1.5em; color:#222; margin-bottom:24px;">Are you sure you want to buy this book?</div>
+        <button id="yesBtn" style="background:#e50914; color:#fff; border:none; padding:10px 28px; border-radius:6px; font-size:1.1em; font-weight:600; margin:0 12px; cursor:pointer;">Yes</button>
+        <button id="noBtn" style="background:#ccc; color:#222; border:none; padding:10px 28px; border-radius:6px; font-size:1.1em; font-weight:600; margin:0 12px; cursor:pointer;">No</button>
+      `;
+      overlay.appendChild(box);
+
+      // Yes button: show thank you
+      box.querySelector('#yesBtn').onclick = function() {
+        box.innerHTML = `<div style="font-size:2.2em; color:#e50914; font-weight:bold;">Thank You For Purchasing!</div>`;
+        setTimeout(() => {
+          if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+        }, 1800);
+      };
+
+      // No button: close modal
+      box.querySelector('#noBtn').onclick = function() {
+        if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+      };
+
+      document.body.appendChild(overlay);
+    }
+  </script>
+  <script>
+  function deleteBook(bookId) {
+    if (!confirm('Are you sure you want to delete this book?')) return;
+    fetch('/user/api/books/delete/' + bookId, {
+      method: 'POST'
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.message) {
+        // Remove the book from the frontend
+        const el = document.getElementById('book-' + bookId);
+        if (el) el.remove();
+        alert(data.message);
+      } else {
+        alert(data.error || 'Failed to delete book');
+      }
+    })
+    .catch(() => alert('Failed to delete book'));
+  }
+</script>
+
+</body>
+</html>
