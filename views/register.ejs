@@ -1,47 +1,4 @@
-<!----
-<!doctype html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
-  </head>
-  
-  <body
-    class="bg-gray-50 dark:bg-gray-800 h-screen w-screen display flex items-center justify-center">
-    
-<form 
-    class=" w-96"
-    action="/user/register"
-    method="POST"
->
 
-        <div>
-            <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">User name</label>
-            <input type="text" id="username" name = " username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="John" required />
-        </div>
-        
-       
-        
-    </div>
-    <div class="mb-6">
-        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email address</label>
-        <input type="email" id="email" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="john.doe@company.com" required />
-    </div> 
-    <div class="mb-6">
-        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-        <input type="password" id="password" name ="Password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="•••••••••" required />
-    </div> 
-   
-    
-    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
-</form>
-
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
-  </body>
-</html>
--->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,7 +7,7 @@
   <title>Book Mart</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    * {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -60,66 +17,171 @@ body {
   font-family: 'Segoe UI', sans-serif;
   background-color: #141414;
   color: #fff;
+  min-height: 100vh;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  align-items: center;
+  padding: 24px 40px;
   background: #000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 
 .logo {
-  font-size: 1.8rem;
+  font-size: 2rem;
   color: #e50914;
+  font-weight: bold;
+  letter-spacing: 2px;
 }
 
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 20px;
+  gap: 28px;
 }
 
 .nav-links li a {
-  color: white;
+  color: #fff;
   text-decoration: none;
-  transition: color 0.3s;
+  font-size: 1.1em;
+  font-weight: 500;
+  padding: 8px 18px;
+  border-radius: 6px;
+  transition: background 0.3s, color 0.3s;
 }
 
 .nav-links li a:hover {
-  color: #e50914;
+  background: #e50914;
+  color: #fff;
 }
-
 
 .hero {
-  padding: 50px 20px;
+  padding: 60px 20px 30px 20px;
   text-align: center;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.8), #141414);
+  background: linear-gradient(to bottom, rgba(0,0,0,0.85), #141414 80%);
 }
 
-.carousel-section {
-  padding: 20px;
+.hero h2 {
+  font-size: 2.5em;
+  color: #fff;
+  margin-bottom: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
-.carousel {
+.hero p {
+  color: #e0e0e0;
+  font-size: 1.2em;
+  margin-bottom: 0;
+}
+
+#search-form {
   display: flex;
-  overflow-x: auto;
-  gap: 10px;
-  padding: 10px 0;
+  justify-content: center;
+  gap: 16px;
+  margin: 32px auto 0 auto;
+  max-width: 600px;
 }
 
-.book {
-  min-width: 200px;
-  transition: transform 0.3s ease;
+#search-form input[type="text"] {
+  padding: 12px 14px;
+  border-radius: 6px;
+  border: none;
+  font-size: 1em;
+  background: #222;
+  color: #fff;
+  outline: none;
+  transition: box-shadow 0.2s;
+  width: 180px;
 }
 
-.book img {
-  width: 100%;
-  border-radius: 8px;
+#search-form input[type="text"]:focus {
+  box-shadow: 0 0 0 2px #e50914;
 }
 
-.book:hover {
-  transform: scale(1.05);
+#search-form button {
+  background: #e50914;
+  color: #fff;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 6px;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+#search-form button:hover {
+  background: #b0060f;
+}
+
+#search-results {
+  max-width: 700px;
+  margin: 36px auto 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+
+.result-card {
+  background: #181818;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(229,9,20,0.08);
+  padding: 22px 18px 18px 18px;
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.result-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 6px 24px rgba(229,9,20,0.18);
+}
+
+.result-card img {
+  width: 210px;
+  height: 340px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  background: #333;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.13);
+}
+
+.result-card strong {
+  color: #fff;
+  font-size: 1.1em;
+  margin-bottom: 4px;
+  text-align: center;
+}
+
+.result-card em {
+  color: #e50914;
+  font-size: 0.98em;
+  margin-bottom: 10px;
+  display: block;
+  text-align: center;
+}
+
+.result-card button {
+  background: #e50914;
+  color: #fff;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.2s;
+}
+
+.result-card button:hover {
+  background: #b0060f;
 }
 
 .footer {
@@ -127,63 +189,111 @@ body {
   text-align: center;
   background: #000;
   color: #888;
+  margin-top: 40px;
 }
-.auth-section {
+</style>
+<style>
+#search-results {
+  
+ 
+
+
+.result-card {
+  background: #181818;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(229,9,20,0.08);
+  padding: 24px 18px 18px 18px;
+  width: 340px;
+  min-height: 420px;
   display: flex;
-  justify-content: center;
-  padding: 40px 20px;
-  background-color: #1f1f1f;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.auth-container {
-  background-color: #000;
-  padding: 30px;
-  border-radius: 8px;
-  max-width: 400px;
-  width: 100%;
+.result-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 6px 24px rgba(229,9,20,0.18);
+}
+
+.result-card img {
+  width: 180px;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  background: #333;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.13);
+}
+
+.result-card strong {
+  color: #fff;
+  font-size: 1em;      
+  margin-bottom: 4px;
   text-align: center;
 }
 
-.auth-container h3 {
-  margin-bottom: 20px;
+.result-card em {
   color: #e50914;
+  font-size: 0.85em;   
+  margin-bottom: 10px;
+  display: block;
+  text-align: center;
 }
 
-.auth-container input {
-  width: 100%;
-  margin: 10px 0;
-  padding: 12px;
-  border: none;
-  border-radius: 4px;
-}
-
-.auth-container button {
-  width: 100%;
-  padding: 12px;
-  background-color: #e50914;
+.result-card button {
+  background: #e50914;
   color: #fff;
   border: none;
-  border-radius: 4px;
+  padding: 8px 18px;
+  border-radius: 5px;
+  font-weight: 600;
   cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.2s;
+  font-size: 0.95em;
 }
 
-.auth-container button:hover {
-  background-color: #ff0d19;
+.result-card button:hover {
+  background: #b0060f;
 }
-
-#toggle-form {
-  margin-top: 15px;
-  color: #888;
+<style>
+  .category-block {
+  margin-bottom: 48px;
+}
+.category-block h2 {
+  color: #ffd700;
+  margin-bottom: 18px;
+  font-size: 1.5em;
+  text-align: left;
+}
+.category-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 24px;
+  margin-bottom: 12px;
+  justify-items: center;
+}
+.more-btn {
+  background: #e50914;
+  color: #fff;
+  border: none;
+  padding: 10px 28px;
+  border-radius: 6px;
+  font-size: 1em;
+  font-weight: 600;
   cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.2s;
 }
-
-#toggle-form span {
-  color: #e50914;
-  text-decoration: underline;
+.more-btn:hover {
+  background: #b0060f;
 }
+</style>
 
 
-  </style>
+</style>
+
 </head>
 <body>
 
@@ -206,26 +316,7 @@ body {
       <p>New arrivals, classics, best sellers & more</p>
     </section>
 
-    <section class="carousel-section">
-      <h3>Trending Books</h3>
-      <div class="carousel">
-        <div class="book"><img src="https://www.google.com/imgres?q=dsa%20books&imgurl=https%3A%2F%2Fm.media-amazon.com%2Fimages%2FI%2F61CVP-MfUoL._AC_UF350%2C350_QL50_.jpg&imgrefurl=https%3A%2F%2Fwww.amazon.in%2FData-Structures-Algorithms-Made-Easy%2Fdp%2F819324527X&docid=y9nzDYKs0RtqYM&tbnid=YkMca-jpoJA3UM&vet=12ahUKEwiZr4vbt6qNAxXfwzgGHee1BD4QM3oECEkQAA..i&w=184&h=350&hcb=2&ved=2ahUKEwiZr4vbt6qNAxXfwzgGHee1BD4QM3oECEkQAA" alt="Book 1"></div>
-        <div class="book"><height>75%</height><img src="https://m.media-amazon.com/images/I/61CVP-MfUoL._AC_UF350,350_QL50_.jpg" alt="Book 2"></div>
-        <div class="book"><height></height><img src="https://miro.medium.com/v2/resize:fit:700/1*4rrupXV_drR9r8Wqi9YsNw.jpeg" alt="Book 3"></div>
-        <div class="book"><img src="https://www.interviewbit.com/blog/wp-content/uploads/2022/02/Introduction-to-Algorithms.jpg" alt="Book 4"></div>
-        <!-- Add more book divs -->
-      </div>
-    </section>
-    <section class="auth-section">
-  <div class="auth-container">
-    <h3 id="form-title">Login</h3>
-    <form action="/user/login" method="POST">
-  <input type="email" name="Email" required>
-  <input type="password" name="Password" required>
-  <button type="submit">Login</button>
-</form>
-  </div>
-</section>
+    
 
   </main>
 
@@ -233,64 +324,398 @@ body {
     <p>&copy; 2025 Book Mart. All rights reserved.</p>
   </footer>
 
-  <!--<script src="script.js">// For future JavaScript interactions (search, filters, animations, etc.)
-console.log('Book Mart loaded');
-document.addEventListener('DOMContentLoaded', () => {
-  const form = document.getElementById('auth-form');
-  const toggle = document.getElementById('toggle-form');
-  const formTitle = document.getElementById('form-title');
-  const usernameField = document.getElementById('username');
+  <form id="search-form">
+  <input type="text" id="search-title" placeholder="Book Title">
+  <input type="text" id="search-author" placeholder="Author">
+  <button type="submit">Search</button>
+</form>
 
-  let isLogin = true;
+<div id="search-results">
+  <!-- Self-help Category -->
+  <div class="category-block">
+    <h2>Self-help</h2>
+    <div class="category-row">
+      <div class="result-card">
+        <img src="https://covers.openlibrary.org/b/id/10523338-L.jpg" alt="Atomic Habits">
+        <strong>Atomic Habits</strong><br>
+        <em>James Clear</em><br>
+        <span>Self-help</span>
+      </div>
+      <div class="result-card">
+        <img src="https://covers.openlibrary.org/b/id/10523339-L.jpg" alt="The Power of Habit">
+        <strong>The Power of Habit</strong><br>
+        <em>Charles Duhigg</em><br>
+        <span>Self-help</span>
+      </div>
+      <div class="result-card">
+        <img src="https://covers.openlibrary.org/b/id/10523340-L.jpg" alt="Think and Grow Rich">
+        <strong>Think and Grow Rich</strong><br>
+        <em>Napoleon Hill</em><br>
+        <span>Self-help</span>
+      </div>
+      <div class="result-card">
+        <img src="https://covers.openlibrary.org/b/id/10523341-L.jpg" alt="The 7 Habits of Highly Effective People">
+        <strong>The 7 Habits of Highly Effective People</strong><br>
+        <em>Stephen R. Covey</em><br>
+        <span>Self-help</span>
+      </div>
+      <div class="result-card">
+        <img src="https://covers.openlibrary.org/b/id/10523342-L.jpg" alt="Awaken the Giant Within">
+        <strong>Awaken the Giant Within</strong><br>
+        <em>Tony Robbins</em><br>
+        <span>Self-help</span>
+      </div>
+      <div class="result-card">
+        <img src="https://covers.openlibrary.org/b/id/10523343-L.jpg" alt="You Are a Badass">
+        <strong>You Are a Badass</strong><br>
+        <em>Jen Sincero</em><br>
+        <span>Self-help</span>
+      </div>
+      <div class="result-card">
+        <img src="https://covers.openlibrary.org/b/id/10523344-L.jpg" alt="The Subtle Art of Not Giving a F*ck">
+        <strong>The Subtle Art of Not Giving a F*ck</strong><br>
+        <em>Mark Manson</em><br>
+        <span>Self-help</span>
+      </div>
+      <div class="result-card">
+        <img src="https://covers.openlibrary.org/b/id/10523345-L.jpg" alt="Mindset">
+        <strong>Mindset</strong><br>
+        <em>Carol S. Dweck</em><br>
+        <span>Self-help</span>
+      </div>
+      <div class="result-card">
+        <img src="https://covers.openlibrary.org/b/id/10523346-L.jpg" alt="Grit">
+        <strong>Grit</strong><br>
+        <em>Angela Duckworth</em><br>
+        <span>Self-help</span>
+      </div>
+      <div class="result-card">
+        <img src="https://covers.openlibrary.org/b/id/10523347-L.jpg" alt="Deep Work">
+        <strong>Deep Work</strong><br>
+        <em>Cal Newport</em><br>
+        <span>Self-help</span>
+      </div>
+    </div>
+    <button class="more-btn" onclick="searchCategory('Self-help')">More</button>
+  </div>
 
-  toggle.addEventListener('click', () => {
-    isLogin = !isLogin;
-    formTitle.textContent = isLogin ? 'Login' : 'Register';
-    toggle.innerHTML = isLogin
-      ? "Don't have an account? <span>Register</span>"
-      : "Already have an account? <span>Login</span>";
-    usernameField.style.display = isLogin ? 'none' : 'block';
-  });
+  <!-- Fiction Category -->
+  <div class="category-block">
+    <h2>Fiction</h2>
+    <div class="category-row">
+      <div class="result-card">
+        <img src="https://covers.openlibrary.org/b/id/10958372-L.jpg" alt="The Alchemist">
+        <strong>The Alchemist</strong><br>
+        <em>Paulo Coelho</em><br>
+        <span>Fiction</span>
+      </div>
+      <div class="result-card">
+        <img src="https://covers.openlibrary.org/b/id/10958373-L.jpg" alt="To Kill a Mockingbird">
+        <strong>To Kill a Mockingbird</strong><br>
+        <em>Harper Lee</em><br>
+        <span>Fiction</span>
+      </div>
+      <div class="result-card">
+        <img src="https://covers.openlibrary.org/b/id/10958374-L.jpg" alt="1984">
+        <strong>1984</strong><br>
+        <em>George Orwell</em><br>
+        <span>Fiction</span>
+      </div>
+      <div class="result-card">
+        <img src="https://covers.openlibrary.org/b/id/10958375-L.jpg" alt="Pride and Prejudice">
+        <strong>Pride and Prejudice</strong><br>
+        <em>Jane Austen</em><br>
+        <span>Fiction</span>
+      </div>
+      <div class="result-card">
+        <img src="https://covers.openlibrary.org/b/id/10958376-L.jpg" alt="The Great Gatsby">
+        <strong>The Great Gatsby</strong><br>
+        <em>F. Scott Fitzgerald</em><br>
+        <span>Fiction</span>
+      </div>
+      <div class="result-card">
+        <img src="https://covers.openlibrary.org/b/id/10958377-L.jpg" alt="The Catcher in the Rye">
+        <strong>The Catcher in the Rye</strong><br>
+        <em>J.D. Salinger</em><br>
+        <span>Fiction</span>
+      </div>
+      <div class="result-card">
+        <img src="https://covers.openlibrary.org/b/id/10958378-L.jpg" alt="The Hobbit">
+        <strong>The Hobbit</strong><br>
+        <em>J.R.R. Tolkien</em><br>
+        <span>Fiction</span>
+      </div>
+      <div class="result-card">
+        <img src="https://covers.openlibrary.org/b/id/10958379-L.jpg" alt="The Book Thief">
+        <strong>The Book Thief</strong><br>
+        <em>Markus Zusak</em><br>
+        <span>Fiction</span>
+      </div>
+      <div class="result-card">
+        <img src="https://covers.openlibrary.org/b/id/10958380-L.jpg" alt="The Kite Runner">
+        <strong>The Kite Runner</strong><br>
+        <em>Khaled Hosseini</em><br>
+        <span>Fiction</span>
+      </div>
+      <div class="result-card">
+        <img src="https://covers.openlibrary.org/b/id/10958381-L.jpg" alt="Life of Pi">
+        <strong>Life of Pi</strong><br>
+        <em>Yann Martel</em><br>
+        <span>Fiction</span>
+      </div>
+    </div>
+    <button class="more-btn" onclick="searchCategory('Fiction')">More</button>
+  </div>
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
+  <!-- Programming Category -->
+  <div class="category-block">
+    <h2>Programming</h2>
+    <div class="category-row">
+      <div class="result-card">
+        <img src="https://covers.openlibrary.org/b/id/11153247-L.jpg" alt="Clean Code">
+        <strong>Clean Code</strong><br>
+        <em>Robert C. Martin</em><br>
+        <span>Programming</span>
+      </div>
+      <div class="result-card">
+        <img src="https://covers.openlibrary.org/b/id/11153248-L.jpg" alt="The Pragmatic Programmer">
+        <strong>The Pragmatic Programmer</strong><br>
+        <em>Andrew Hunt, David Thomas</em><br>
+        <span>Programming</span>
+      </div>
+      <div class="result-card">
+        <img src="https://covers.openlibrary.org/b/id/11153249-L.jpg" alt="Introduction to Algorithms">
+        <strong>Introduction to Algorithms</strong><br>
+        <em>Thomas H. Cormen</em><br>
+        <span>Programming</span>
+      </div>
+      <div class="result-card">
+        <img src="https://covers.openlibrary.org/b/id/11153250-L.jpg" alt="Design Patterns">
+        <strong>Design Patterns</strong><br>
+        <em>Erich Gamma</em><br>
+        <span>Programming</span>
+      </div>
+      <div class="result-card">
+        <img src="https://covers.openlibrary.org/b/id/11153251-L.jpg" alt="You Don't Know JS">
+        <strong>You Don't Know JS</strong><br>
+        <em>Kyle Simpson</em><br>
+        <span>Programming</span>
+      </div>
+      <div class="result-card">
+        <img src="https://covers.openlibrary.org/b/id/11153252-L.jpg" alt="JavaScript: The Good Parts">
+        <strong>JavaScript: The Good Parts</strong><br>
+        <em>Douglas Crockford</em><br>
+        <span>Programming</span>
+      </div>
+      <div class="result-card">
+        <img src="https://covers.openlibrary.org/b/id/11153253-L.jpg" alt="Refactoring">
+        <strong>Refactoring</strong><br>
+        <em>Martin Fowler</em><br>
+        <span>Programming</span>
+      </div>
+      <div class="result-card">
+        <img src="https://covers.openlibrary.org/b/id/11153254-L.jpg" alt="Code Complete">
+        <strong>Code Complete</strong><br>
+        <em>Steve McConnell</em><br>
+        <span>Programming</span>
+      </div>
+      <div class="result-card">
+        <img src="https://covers.openlibrary.org/b/id/11153255-L.jpg" alt="The Mythical Man-Month">
+        <strong>The Mythical Man-Month</strong><br>
+        <em>Frederick P. Brooks Jr.</em><br>
+        <span>Programming</span>
+      </div>
+      <div class="result-card">
+        <img src="https://covers.openlibrary.org/b/id/11153256-L.jpg" alt="Structure and Interpretation of Computer Programs">
+        <strong>Structure and Interpretation of Computer Programs</strong><br>
+        <em>Harold Abelson</em><br>
+        <span>Programming</span>
+      </div>
+    </div>
+    <button class="more-btn" onclick="searchCategory('Programming')">More</button>
+  </div>
+</div>
+<script>
+document.getElementById('search-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const title = document.getElementById('search-title').value;
+  const author = document.getElementById('search-author').value;
+  const resultsDiv = document.getElementById('search-results');
+  resultsDiv.innerHTML = '';
 
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    const username = document.getElementById('username').value;
+  const res = await fetch(`/user/api/google-books?title=${encodeURIComponent(title)}&author=${encodeURIComponent(author)}`);
+  const books = await res.json();
 
-    const endpoint = isLogin ? '/api/users/login' : '/api/users/register';
+  if (!books.length) {
+    resultsDiv.innerHTML = '<div style="color:red;">No books found.</div>';
+    return;
+  }
 
-    const payload = isLogin
-      ? { email, password }
-      : { username, email, password };
+  const grid = document.createElement('div');
+  grid.className = 'category-row';
 
-    try {
-      const res = await fetch(`http://localhost:5000${endpoint}`, {
+  books.forEach(book => {
+    const info = book.volumeInfo;
+    const imageUrl = info.imageLinks && info.imageLinks.thumbnail
+      ? info.imageLinks.thumbnail
+      : 'https://via.placeholder.com/210x340?text=No+Cover';
+    const category = info.categories && info.categories.length
+      ? info.categories[0]
+      : 'Uncategorized';
+    const div = document.createElement('div');
+    div.className = 'result-card';
+    div.innerHTML = `
+      <img src="${imageUrl}" alt="Book Cover">
+      <strong>${info.title || ''}</strong><br>
+      <em>${info.authors ? info.authors.join(', ') : ''}</em><br>
+      <span style="background:#222; color:#ffd700; padding:3px 12px; border-radius:8px; font-size:0.95em; margin-bottom:8px; display:inline-block;">${category}</span>
+      <button>Save</button>
+      <hr>
+    `;
+    div.querySelector('button').onclick = async () => {
+      await fetch('/user/api/save-google-book', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
+        body: JSON.stringify({
+          title: info.title,
+          author: info.authors ? info.authors.join(', ') : '',
+          price: 0,
+          imageUrl: imageUrl,
+          description: info.description || '',
+          category: category
+        })
       });
-
-      const data = await res.json();
-
-      if (!res.ok) throw new Error(data.error || 'Something went wrong');
-
-      alert(`${isLogin ? 'Login' : 'Registration'} successful!`);
-      console.log(data); // You can store token here if needed
-    } catch (err) {
-      alert(err.message);
-    }
+      alert('Book saved!');
+    };
+    grid.appendChild(div);
   });
+  resultsDiv.appendChild(grid);
 });
 
+// Category search
+function searchCategory(category) {
+  const resultsDiv = document.getElementById('search-results');
+  resultsDiv.innerHTML = '';
+  fetch(`/user/api/google-books?title=${encodeURIComponent(category)}&author=`)
+    .then(res => res.json())
+    .then(books => {
+      if (!books.length) {
+        resultsDiv.innerHTML = '<div style="color:red;">No books found.</div>';
+        return;
+      }
+      const grid = document.createElement('div');
+      grid.className = 'category-row';
+      books.forEach(book => {
+        const info = book.volumeInfo;
+        const imageUrl = info.imageLinks && info.imageLinks.thumbnail
+          ? info.imageLinks.thumbnail
+          : 'https://via.placeholder.com/210x340?text=No+Cover';
+        const cat = info.categories && info.categories.length
+          ? info.categories[0]
+          : category;
+        const div = document.createElement('div');
+        div.className = 'result-card';
+        div.innerHTML = `
+          <img src="${imageUrl}" alt="Book Cover">
+          <strong>${info.title || ''}</strong><br>
+          <em>${info.authors ? info.authors.join(', ') : ''}</em><br>
+          <span>${cat}</span>
+          <button>Save</button>
+          <hr>
+        `;
+        div.querySelector('button').onclick = async () => {
+          await fetch('/user/api/save-google-book', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              title: info.title,
+              author: info.authors ? info.authors.join(', ') : '',
+              price: 0,
+              imageUrl: imageUrl,
+              description: info.description || '',
+              category: cat
+            })
+          });
+          alert('Book saved!');
+        };
+        grid.appendChild(div);
+      });
+      resultsDiv.appendChild(grid);
+    });
+}
+</script>
+<script>
+function searchCategory(category) {
+ document.getElementById('search-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const title = document.getElementById('search-title').value;
+  const author = document.getElementById('search-author').value;
+  const resultsDiv = document.getElementById('search-results');
+  resultsDiv.innerHTML = '';
 
+  const res = await fetch(`/user/api/google-books?title=${encodeURIComponent(title)}&author=${encodeURIComponent(author)}`);
+  const books = await res.json();
 
+  if (!books.length) {
+    resultsDiv.innerHTML = '<div style="color:red;">No books found.</div>';
+    return;
+  }
 
+  const grid = document.createElement('div');
+  grid.className = 'category-row';
 
-</script> -->
-  
-
-
+  books.forEach(book => {
+    const info = book.volumeInfo;
+    const imageUrl = info.imageLinks && info.imageLinks.thumbnail
+      ? info.imageLinks.thumbnail
+      : 'https://via.placeholder.com/210x340?text=No+Cover';
+    const category = info.categories && info.categories.length
+      ? info.categories[0]
+      : 'Uncategorized';
+    const div = document.createElement('div');
+    div.className = 'result-card';
+    div.innerHTML = `
+      <img src="${imageUrl}" alt="Book Cover">
+      <strong>${info.title || ''}</strong><br>
+      <em>${info.authors ? info.authors.join(', ') : ''}</em><br>
+      <span style="background:#222; color:#ffd700; padding:3px 12px; border-radius:8px; font-size:0.95em; margin-bottom:8px; display:inline-block;">${category}</span>
+      <button>Save</button>
+      <hr>
+    `;
+    div.querySelector('button').onclick = async () => {
+      await fetch('/user/api/save-google-book', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          title: info.title,
+          author: info.authors ? info.authors.join(', ') : '',
+          price: 0,
+          imageUrl: imageUrl,
+          description: info.description || '',
+          category: category
+        })
+      });
+      alert('Book saved!');
+    };
+    grid.appendChild(div);
+  });
+  resultsDiv.appendChild(grid);
+});
+</script>
+<footer class="footer">
+  <div>
+    <span>&copy; 2025 Book Mart</span> &nbsp;|&nbsp;
+    <a href="/user/register">Home</a> &nbsp;|&nbsp;
+    <a href="/user/buy">Buy</a> &nbsp;|&nbsp;
+    <a href="/user/sell">Sell</a> &nbsp;|&nbsp;
+    <a href="/user/login">Login</a>
+  </div>
+  <div>
+    <span>Made with ❤️ for book lovers</span>
+  </div>
+</footer>
+<footer class="footer">
+  <p>&copy; 2025 Book Mart. All rights reserved.</p>
+</footer>
 </body>
 </html>

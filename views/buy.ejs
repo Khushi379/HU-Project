@@ -75,7 +75,7 @@
 
   <!--<% books.forEach(book => { %>
     <li style="background:#f8f8f8; margin-bottom:20px; padding:18px 22px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.07); position:relative;">
-      <!-- Cross button --
+      <!- Cross button --
       <button 
         style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:18px; color:#e50914; cursor:pointer;"
         title="Remove"
@@ -162,5 +162,33 @@
   }
 </script>
 
+
+<div id="search-results"></div>
+<script>
+document.getElementById('search-form').addEventListener('submit', async function(e) {
+  e.preventDefault(); // Prevent page reload
+  const title = document.getElementById('search-title').value;
+  const author = document.getElementById('search-author').value;
+  const res = await fetch(`/user/api/google-books?title=${encodeURIComponent(title)}&author=${encodeURIComponent(author)}`);
+  const books = await res.json();
+  const resultsDiv = document.getElementById('search-results');
+  resultsDiv.innerHTML = '';
+  books.forEach(book => {
+    const info = book.volumeInfo;
+    const div = document.createElement('div');
+    div.innerHTML = `
+      <img src="${info.imageLinks ? info.imageLinks.thumbnail : ''}" style="height:100px;"><br>
+      <strong>${info.title || ''}</strong><br>
+      <em>${info.authors ? info.authors.join(', ') : ''}</em><br>
+      <hr>
+    `;
+    resultsDiv.appendChild(div);
+    if (!books.length) {
+  resultsDiv.innerHTML = '<div style="color:red;">No books found.</div>';
+  return;
+}
+  });
+});
+</script>
 </body>
 </html>

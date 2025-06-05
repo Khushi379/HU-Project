@@ -3,7 +3,8 @@ const Router = express.Router();
 const { body,validationResult } = require('express-validator');
 const UserModel = require('../models/user.model');
 
-const BookModel = require('../models/book.model'); // Add at the top
+
+const BookModel = require('../models/book.model'); 
 
 // ...existing code...
 
@@ -87,6 +88,49 @@ Router.get('/sell', (req, res) => {
   res.render("sell");
 });
 
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+
+Router.get('/api/google-books', async (req, res) => {
+  const { title, author } = req.query;
+  const apiKey = 'AIzaSyD097p1UWqmBnCBUtBJugOkNjcdhzXb_6Q';
+
+  let q = '';
+  if (title) q += `intitle:${title}`;
+  if (author) q += (q ? '+' : '') + `inauthor:${author}`;
+
+  // If q is empty, return an error
+  if (!q) {
+    return res.status(400).json({ error: 'Please provide a title or author to search.' });
+  }
+
+  const url = `https://www.googleapis.com/books/v1/volumes?q=${q}&key=${apiKey}`;
+
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    if (data.error) {
+      // Log the error from Google Books API
+      console.error('Google Books API error:', data.error);
+      return res.status(500).json({ error: 'Google Books API error', details: data.error });
+    }
+    res.json(data.items || []);
+  } catch (err) {
+    console.error('Google Books API error:', err);
+    res.status(500).json({ error: 'Failed to fetch from Google Books', details: err.message });
+  }
+});
+Router.post('/api/save-google-book', async (req, res) => {
+  try {
+    // Expecting book data in req.body
+    const { title, author, price, imageUrl, description } = req.body;
+    const newBook = await BookModel.create({ title, author, price, imageUrl, description });
+    res.json({ message: "Book saved to database!", book: newBook });
+  } catch (err) {
+   
+    console.error('Google Books API error:', err); 
+    res.status(500).json({ error: "Failed to save book", details: err.message });
+  }
+});
 
 
 
