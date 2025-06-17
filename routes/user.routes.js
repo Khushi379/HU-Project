@@ -131,6 +131,12 @@ Router.post('/api/save-google-book', async (req, res) => {
     res.status(500).json({ error: "Failed to save book", details: err.message });
   }
 });
+Router.get('/register/Self-help', (req, res) => {
+  console.log(req.body);
+  
+  res.render("Self-help");
+});
+
 
 
 
