@@ -61,9 +61,7 @@ Router.post('/login', [
   }
   // Show the submitted data on the screen
   res.send(`User logged in successfully.<br>Data received:<br><pre>${JSON.stringify(req.body, null, 2)}</pre>`);
-});
-
-
+}); // <-- This line was missing!
 // Delete book by ID
 Router.post('/api/books/delete/:id', async (req, res) => {
   try {
